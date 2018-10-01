@@ -26,6 +26,10 @@
 
 # 命名空间和作用域 
 https://www.programiz.com/python-programming/namespace
+## 什么是命名空间
+名称(也称为标识符)只是给对象的名称。Python 中的所有东西都是一个对象。Name 是一种访问底层对象的方法。
+
+
 
 ## python 中的包(Packages)
 You can think of packages as the directories on a file system and modules as files within directories, but don't take this analogy too literally since packages and modules need not originate from the file system. Like file system directories, packages are organized hierarchically, and packages may themselves contain subpackages, as well as regular modules.
@@ -183,3 +187,4 @@ pep8 --statistics -qq Python-2.5/Lib
 3. pytest
 4. UT
 5. pep8
+6. venv
