@@ -47,3 +47,55 @@ import scrapy
 > 在 python3 里，对 twisted 未完全支持，但未支持功能我们基本用不着,我们只需要它下载那一块
 
 ## 使用
+<pre>
+guohui:python guohui$ scrapy startproject sp1
+New Scrapy project 'sp1', using template directory '/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/scrapy/templates/project', created in:
+    /Users/guohui/python/sp1
+
+You can start your first spider with:
+    cd sp1
+    scrapy genspider example example.com
+guohui:python guohui$ cd sp1/
+guohui:sp1 guohui$ tree
+.
+├── scrapy.cfg    # 配置文件，主要指教向 settings.py
+└── sp1
+    ├── __init__.py
+    ├── __pycache__
+    ├── middlewares.py   中间件
+    ├── items.py     格式化
+    ├── pipelines.py    持久化
+    ├── settings.py    配置文件
+    └── spiders    爬虫
+        ├── __init__.py
+        └── __pycache__
+guohui:sp1 guohui$ cd sp1
+guohui:sp1 guohui$ scrapy genspider baidu baidu.com
+Created spider 'baidu' using template 'basic' in module:
+  sp1.spiders.baidu
+guohui:sp1 guohui$ cd spiders/  # 创建爬虫，一个项目可以创建多个爬虫，爬取多个网站
+guohui:spiders guohui$ cat baidu.py 
+# -*- coding: utf-8 -*-
+import scrapy
+
+
+class BaiduSpider(scrapy.Spider):
+    name = 'baidu'
+    allowed_domains = ['baidu.com']
+    start_urls = ['http://baidu.com/']
+
+    def parse(self, response):
+        pass
+# 进入项目(spiders)的上级目录，并执行爬虫
+cd sp1
+scrapy crawl baidu --nolog
+</pre>
+
+### settings.py
+
+<pre>
+# Obey(遵守) robots.txt rules (爬虫协议)
+ROBOTSTXT_OBEY = False
+</pre>
+
+### 基本使用及选择器
